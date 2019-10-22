@@ -27,7 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['label'=>'User', 'attribute'=>'userName'],
             ['label'=>'Product', 'attribute'=>'productName'],
             'quantity',
-            'amount',
+            'amount:currency',
+            'created_at:datetime',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

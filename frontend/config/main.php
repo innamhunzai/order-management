@@ -44,6 +44,13 @@ return [
                 '' => 'order/index'
             ],
         ],
+        'formatter' => [
+            'datetimeFormat' => 'php:d M Y, h:i A',
+            'dateFormat' => 'php:d M Y',
+            'timeFormat' => 'php:h:i A',
+            'decimalSeparator' => '.',
+            'currencyCode' => 'EUR',
+        ],
     ],
     'params' => $params,
 ];
