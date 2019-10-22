@@ -19,6 +19,7 @@ use yii\helpers\ArrayHelper;
  */
 class OrderController extends Controller
 {
+    public $defaultAction = 'index';
     /**
      * {@inheritdoc}
      */
