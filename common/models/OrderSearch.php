@@ -20,8 +20,8 @@ class OrderSearch extends Order
     public function rules()
     {
         return [
-            ['searchTerm', 'string', 'max'=>10],
-            [['timeSpan'], 'in', 'range'=>['alltime', 'week', 'today']],
+            ['searchTerm', 'string', 'max' => 255],
+            [['timeSpan'], 'in', 'range' => ['alltime', 'week', 'today']],
         ];
     }
 

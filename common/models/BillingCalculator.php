@@ -18,20 +18,21 @@ class BillingCalculator extends Model
      * @param DiscountRule $discountRule
      * @param array $config
      */
-    function __construct($discountRule, $config = [])
+    function __construct($discountRule = null, $config = [])
     {
         $this->discountRule = $discountRule;
         parent::__construct($config);
     }
 
     /**
-     * @param Order
+     * @param float
+     * @param integer
      * @return  float Total Bill Amount
      */
-    public function calculateBill($order)
+    public function calculateBill($price, $quantity)
     {
-        $totalBill = $order->product->price * $order->quantity;
-        if ($this->discountRule != null) {
+        $totalBill = $price * $quantity;
+        if ($this->discountRule != null && $this->discountRule->min_quantity <= $quantity) {
             //Apply Discount Formula
             $totalBill = $totalBill - ($totalBill * ($this->discountRule->percentage / 100));
         }

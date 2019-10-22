@@ -50,6 +50,12 @@ class Order extends \yii\db\ActiveRecord
         return [
             [['user_id', 'product_id', 'quantity'], 'required'],
             [['user_id', 'product_id', 'quantity', 'created_at', 'updated_at'], 'integer'],
+            ['quantity', function ($attribute, $params) {
+                $min = 1;
+                if ($this->$attribute < $min) {
+                    $this->addError($attribute, "Quantity must be at least {$min}.");
+                }
+            }],
             [['amount'], 'number'],
             ['product_id', 'exist', 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
             ['user_id', 'exist', 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -59,7 +65,7 @@ class Order extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return array_merge(parent::behaviors(), [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ]);
     }
 
@@ -116,7 +122,7 @@ class Order extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
-        $this->amount = $this->billingCalculator->calculateBill($this);
+        $this->amount = $this->billingCalculator->calculateBill($this->product->price, $this->quantity);
         return parent::beforeSave($insert);
     }
 }
