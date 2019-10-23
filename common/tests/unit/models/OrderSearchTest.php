@@ -94,21 +94,57 @@ class OrderSearchTest extends \Codeception\Test\Unit
 
     public function testFilterTodayOrders()
     {
-        //todo: implementation of test case
+        $orderModel = new OrderSearch();
+        $searchResult = $orderModel->search([
+            'OrderSearch' => [
+                'timeSpan' => 'today',
+                'searchTerm' => ''
+            ]
+        ]);
+        expect($searchResult)->isInstanceOf(ActiveDataProvider::class);
+        expect($searchResult->totalCount)->equals(4);
+        expect_not($orderModel->getErrors('timeSpan'));
     }
 
     public function testFilterLastWeekOrders()
     {
-        //todo: implementation of test case
+        $orderModel = new OrderSearch();
+        $searchResult = $orderModel->search([
+            'OrderSearch' => [
+                'timeSpan' => 'week',
+                'searchTerm' => ''
+            ]
+        ]);
+        expect($searchResult)->isInstanceOf(ActiveDataProvider::class);
+        expect($searchResult->totalCount)->equals(13);
+        expect_not($orderModel->getErrors('timeSpan'));
     }
 
     public function testFilterTodayOrdersOfSpecificUser()
     {
-        //todo: implementation of test case
+        $orderModel = new OrderSearch();
+        $searchResult = $orderModel->search([
+            'OrderSearch' => [
+                'timeSpan' => 'today',
+                'searchTerm' => 'bayer.hudson'
+            ]
+        ]);
+        expect($searchResult)->isInstanceOf(ActiveDataProvider::class);
+        expect($searchResult->totalCount)->equals(4);
+        expect_not($orderModel->getErrors('timeSpan'));
     }
 
     public function testFilterTodayOrdersOfSpecificProduct()
     {
-        //todo: implementation of test case
+        $orderModel = new OrderSearch();
+        $searchResult = $orderModel->search([
+            'OrderSearch' => [
+                'timeSpan' => 'today',
+                'searchTerm' => 'Coca Cola'
+            ]
+        ]);
+        expect($searchResult)->isInstanceOf(ActiveDataProvider::class);
+        expect($searchResult->totalCount)->equals(3);
+        expect_not($orderModel->getErrors('timeSpan'));
     }
 }

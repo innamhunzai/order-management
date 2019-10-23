@@ -27,7 +27,7 @@ sample main-local.php file:
             'charset' => 'utf8',
         ],
     ],
-    'timezone' => 'Asia/Karachi'
+    'timezone' => 'Europe/Tallinn'
 ```
 
 
