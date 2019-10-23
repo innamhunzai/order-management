@@ -6,7 +6,6 @@ use common\fixtures\DiscountRuleFixture;
 use common\fixtures\ProductFixture;
 use common\fixtures\UserFixture;
 use common\models\BillingCalculator;
-use common\models\DiscountRule;
 use common\models\Order;
 
 class OrderTest extends \Codeception\Test\Unit
