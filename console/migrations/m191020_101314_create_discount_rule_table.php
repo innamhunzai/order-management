@@ -22,7 +22,7 @@ class m191020_101314_create_discount_rule_table extends Migration
         $this->createTable('{{%discount_rule}}', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->notNull(),
-            'min_quantity' => $this->decimal(10,2)->notNull(),
+            'min_quantity' => $this->integer()->notNull(),
             'percentage' => $this->decimal(10,2)->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
