@@ -94,9 +94,20 @@ class Order extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    /**
+     * @return String name of the associated user
+     */
     public function getUserName()
     {
         return $this->user->username;
+    }
+
+    /**
+     * @return String price of the associated product
+     */
+    public function getProductPrice()
+    {
+        return $this->product->price;
     }
 
     /**
@@ -109,7 +120,7 @@ class Order extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return String of the associated product
+     * @return String name of the associated product
      */
     public function getProductName()
     {

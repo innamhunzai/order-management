@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             ['label'=>'User', 'attribute'=>'userName'],
             ['label'=>'Product', 'attribute'=>'productName'],
+            ['label'=>'Price', 'attribute'=>'productPrice'],
             'quantity',
             'amount:currency',
             'created_at:datetime',
